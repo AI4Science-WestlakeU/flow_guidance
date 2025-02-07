@@ -1,6 +1,8 @@
-This is the official implementation of the paper "On the Guidance of Flow Matching"
+This is the official implementation of the paper **"On the Guidance of Flow Matching"**.
 
-## Synthetic Dataset Experiments
+[[arXiv](https://arxiv.org/abs/2502.02150)]
+
+# Synthetic Dataset Experiments
 
 ### Installation
 With python 3.11, install the following packages:
@@ -43,7 +45,7 @@ including gradient, contrastive genergy guidance, and out g^MC.
 
 
 
-## Image Inverse Problem Experiments
+# Image Inverse Problem Experiments
 
 ### Installation
 
@@ -75,7 +77,7 @@ Then, evaluate different guidance methods on the three inverse problems using
 
 
 
-## Offline RL Experiments
+# Offline RL Experiments
 
 ### Installation
 
@@ -129,3 +131,17 @@ Run bash from the inside the offline_rl folder and run the following command:
 ### Acknowledgements
 
 The implementation is based on the repo of [Diffuser](https://github.com/jannerm/diffuser).
+
+
+# Citation
+If you find our work and/or our code useful, please cite us via:
+
+```bibtex
+@article{feng2025on,
+  title={On the Guidance of Flow Matching},
+  author={Feng, Ruiqi and Wu, Tailin and Yu, Chenglei and Deng, Wenhao and Hu, Peiyan},
+  journal={arXiv preprint arXiv:2502.02150},
+  year={2025}
+}
+```
+
