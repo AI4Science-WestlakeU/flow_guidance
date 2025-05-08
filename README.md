@@ -1,6 +1,13 @@
-This is the official implementation of the paper **"On the Guidance of Flow Matching"**.
+# On the Guidance of Flow Matching (ICML 2025 spotlight)
 
 [[arXiv](https://arxiv.org/abs/2502.02150)]
+
+Official repo for the paper [On the Guidance of Flow Matching](https://arxiv.org/abs/2502.02150)
+
+[Ruiqi Feng](https://weenming.github.io/), [Tailin Wu](https://tailin.org)†, [Chenglei Yu](https://scholar.google.com/citations?user=lzYSFx4AAAAJ&hl=zh-CN), [Wenhao Deng](https://w3nhao.github.io/), [Peiyan Hu](https://peiyannn.github.io/)
+
+ICML 2025 spotlight
+
 
 # Synthetic Dataset Experiments
 
