@@ -34,7 +34,7 @@ for flow_matching_type in cfm ot_cfm; do
                                 --horizon 20 \
                                 --flow_exp_name "$flow_prefix"H20_1e6steps \
                                 --flow_cp 19 \
-                                --flow_matching_type $flow_matching_type \
+                                --flow_matching_type cfm \
                                 --value_exp_name H20_inf \
                                 --value_cp 2 \
                                 --ode_t_steps 10 \
