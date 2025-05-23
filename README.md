@@ -146,7 +146,7 @@ If you find our work and/or our code useful, please cite us via:
 ```bibtex
 @article{feng2025on,
   title={On the Guidance of Flow Matching},
-  author={Feng, Ruiqi and Wu, Tailin and Yu, Chenglei and Deng, Wenhao and Hu, Peiyan},
+  author={Feng, Ruiqi and Yu, Chenglei and Deng, Wenhao and Hu, Peiyan and Wu, Tailin},
   journal={arXiv preprint arXiv:2502.02150},
   year={2025}
 }
