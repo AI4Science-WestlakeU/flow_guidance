@@ -1,6 +1,6 @@
 # On the Guidance of Flow Matching (ICML 2025 spotlight)
 
-[[arXiv](https://arxiv.org/abs/2502.02150)]
+[[paper](https://openreview.net/forum?id=pKaNgFzJBy)] [[arXiv](https://arxiv.org/abs/2502.02150)]
 
 Official repo for the paper [On the Guidance of Flow Matching](https://arxiv.org/abs/2502.02150)
 
@@ -144,11 +144,13 @@ The implementation is based on the repo of [Diffuser](https://github.com/jannerm
 If you find our work and/or our code useful, please cite us via:
 
 ```bibtex
-@article{feng2025on,
-  title={On the Guidance of Flow Matching},
-  author={Feng, Ruiqi and Yu, Chenglei and Deng, Wenhao and Hu, Peiyan and Wu, Tailin},
-  journal={arXiv preprint arXiv:2502.02150},
-  year={2025}
+@inproceedings{
+feng2025on,
+title={On the Guidance of Flow Matching},
+author={Feng, Ruiqi and Yu, Chenglei and Deng, Wenhao and Hu, Peiyan and Wu, Tailin},
+booktitle={Forty-second International Conference on Machine Learning},
+year={2025},
+url={https://openreview.net/forum?id=pKaNgFzJBy}
 }
 ```
 
