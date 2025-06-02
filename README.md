@@ -145,12 +145,12 @@ If you find our work and/or our code useful, please cite us via:
 
 ```bibtex
 @inproceedings{
-feng2025on,
-title={On the Guidance of Flow Matching},
-author={Feng, Ruiqi and Yu, Chenglei and Deng, Wenhao and Hu, Peiyan and Wu, Tailin},
-booktitle={Forty-second International Conference on Machine Learning},
-year={2025},
-url={https://openreview.net/forum?id=pKaNgFzJBy}
+  feng2025on,
+  title={On the Guidance of Flow Matching},
+  author={Feng, Ruiqi and Yu, Chenglei and Deng, Wenhao and Hu, Peiyan and Wu, Tailin},
+  booktitle={Forty-second International Conference on Machine Learning},
+  year={2025},
+  url={https://openreview.net/forum?id=pKaNgFzJBy}
 }
 ```
 
