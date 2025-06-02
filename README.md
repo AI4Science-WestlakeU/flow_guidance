@@ -6,6 +6,8 @@ Official repo for the paper [On the Guidance of Flow Matching](https://arxiv.org
 
 [Ruiqi Feng](https://weenming.github.io/), [Chenglei Yu](https://scholar.google.com/citations?user=lzYSFx4AAAAJ&hl=zh-CN)\*, [Wenhao Deng](https://w3nhao.github.io/)\*, [Peiyan Hu](https://peiyannn.github.io/), [Tailin Wu](https://tailin.org)†
 
+We introduce the first framework for general flow matching guidance, from which new guidance methods are derived and many classical guidance methods are covered as special cases.
+
 ICML 2025 spotlight
 
 
