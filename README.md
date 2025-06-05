@@ -10,7 +10,7 @@ ICML 2025 spotlight
 
 We introduce the first framework for general flow matching guidance, from which new guidance methods are derived and many classical guidance methods are covered as special cases.
 
-![](./fig1.pdf)
+![](./fig1.png)
 
 # Synthetic Dataset Experiments
 
