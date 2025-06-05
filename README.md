@@ -1,6 +1,6 @@
 # On the Guidance of Flow Matching (ICML 2025 spotlight)
 
-[[paper](https://openreview.net/forum?id=pKaNgFzJBy)] [[arXiv](https://arxiv.org/abs/2502.02150)]
+[[paper](https://openreview.net/forum?id=pKaNgFzJBy)] | [[arXiv](https://arxiv.org/abs/2502.02150)]
 
 Official repo for the paper [On the Guidance of Flow Matching](https://arxiv.org/abs/2502.02150)
 
@@ -10,6 +10,7 @@ ICML 2025 spotlight
 
 We introduce the first framework for general flow matching guidance, from which new guidance methods are derived and many classical guidance methods are covered as special cases.
 
+[](./fig1.pdf)
 
 # Synthetic Dataset Experiments
 
