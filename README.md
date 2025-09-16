@@ -1,6 +1,6 @@
 # On the Guidance of Flow Matching (ICML 2025 spotlight)
 
-[[paper](https://openreview.net/forum?id=pKaNgFzJBy)] | [[arXiv](https://arxiv.org/abs/2502.02150)] | [model weights](https://drive.google.com/drive/folders/1j4-4xdipNlmhi-eyuVHDXsE4KjYWzkSp?usp=sharing)
+[[paper](https://openreview.net/forum?id=pKaNgFzJBy)] | [[arXiv](https://arxiv.org/abs/2502.02150)] | [[model weights]](https://drive.google.com/drive/folders/1j4-4xdipNlmhi-eyuVHDXsE4KjYWzkSp?usp=sharing)
 
 Official repo for the paper [On the Guidance of Flow Matching](https://arxiv.org/abs/2502.02150)
 
