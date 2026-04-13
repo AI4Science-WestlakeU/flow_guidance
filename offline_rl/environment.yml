@@ -6,6 +6,7 @@ dependencies:
 - python=3.8.12
 - pip
 - patchelf
+- git
 - pip:
     - -f https://download.pytorch.org/whl/torch_stable.html
     - numpy==1.22
@@ -18,10 +19,11 @@ dependencies:
     - gymnasium==1.0.0
     - h5py==3.11.0
     - einops==0.8.0
+    - cython==0.29.37
     - scipy==1.10.1
-    - git+https://github.com/Farama-Foundation/d4rl@f2a05c0d66722499bf8031b094d9af3aea7c372b#egg=d4rl
-    - cython==3.0.0a10
     - pot==0.9.5
     - tensorboard
     - tyro
     - typed-argument-parser==1.10.1
+    - gitpython
+    - scikit-video

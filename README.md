@@ -97,25 +97,31 @@ wget https://mujoco.org/download/mujoco210-linux-x86_64.tar.gz
 # extract to ~/.mujoco/mujoco210
 mkdir ~/.mujoco
 tar -xvzf mujoco210-linux-x86_64.tar.gz -C ~/.mujoco
-# make sure omesa is installed
-apt install libosmesa6-dev libgl1-mesa-glx libglfw3 libglx-mesa0 libgl1-mesa-dri
+
+# Add these lines to your ~/.bashrc or run them in your current shell
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.mujoco/mujoco210/bin' >> ~/.bashrc 
+echo 'export MUJOCO_PY_MUJOCO_PATH=$HOME/.mujoco/mujoco210' >> ~/.bashrc
 ```
 
 Then, you can install the `gflower` (which stands for Guided Flow Planner) 
 package by running the following commands:
 ```bash
-cd ./gflower
+cd ./offline_rl
 conda env create -f environment.yml
 
 conda activate gflower
+
+# Install the local package
 pip install -e .
-conda install -c conda-forge gcc
 
-# And then you should see the Error because the gym was installed in ver > 0.18 by the auto installation
+# And then you should see the Error because the gym was installed in ver > 0.18 by the auto installation, so you need to install gym 0.18.3
 
-# if missing crypt.h
-apt install libcrypt1
-cp /usr/include/crypt.h $CONDA_PREFIX/include/python3.8/crypt.h
+# If you are sudoers, make sure omesa is installed
+# apt update
+# apt install libosmesa6-dev libgl1-mesa-glx libglfw3 libglx-mesa0 libgl1-mesa-dri
+
+# Install gcc toolchain + GL headers from conda-forge (non-root friendly)
+conda install -c conda-forge gcc glew mesalib -y
 
 # final step: install gym 0.18.3
 pip install setuptools==57.5.0
@@ -123,11 +129,36 @@ pip install wheel==0.37.0
 pip install pip==24.0
 pip install gym==0.18.3
 ```
+
+```bash
+# (Optional but recommended) rebuild mujoco-py with the conda GCC toolchain.
+conda activate gflower
+export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc
+export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++
+export LDSHARED="$CC -shared"
+export CFLAGS="-Wno-error=incompatible-pointer-types"
+export LDFLAGS="-Wl,-rpath,$CONDA_PREFIX/lib"
+
+pip install --force-reinstall --no-build-isolation --no-cache-dir "cython<3" "mujoco-py==2.1.2.14"
+```
 ### Datasets
 When running the training scripts, the Locomotion dataset will be automatically downloaded
 to ~/.d4rl.
 
 ### Reproducing the results
+
+Activate the environment before running the scripts:
+```bash
+conda activate gflower
+
+# Keep the same compiler exports when training/evaluating to avoid the GCC pointer
+# errors (`WrapMjVisual_* incompatible pointer type`)
+export CC=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-gcc
+export CXX=$CONDA_PREFIX/bin/x86_64-conda-linux-gnu-g++
+export LDSHARED="$CC -shared"
+export CFLAGS="-Wno-error=incompatible-pointer-types"
+export LDFLAGS="-Wl,-rpath,$CONDA_PREFIX/lib"
+```
 
 Run bash from inside the offline_rl folder and run the following command:
 
@@ -137,6 +168,40 @@ Run bash from inside the offline_rl folder and run the following command:
 4. ```bash run_scripts/eval_mc.sh``` to evaluate $g^{MC}$
 5. ```bash run_scripts/eval_sim_mc.sh``` to evaluate $g^{sim-MC}$ in simulation
 6. ```bash run_scripts/run_guidance_matching.sh``` to train the guidance model $g_\phi$ and evalute its performance.
+
+#### Troubleshoot
+1. If you are not sudoers, install the mesa libraries (for omesa) and glew:
+```bash
+conda install -c conda-forge glew mesalib -y
+```
+
+2. If `cython`/`pip` complain about missing `crypt.h`, run:
+```bash
+apt install libcrypt1
+conda activate gflower
+cp /usr/include/crypt.h $CONDA_PREFIX/include/python3.8/crypt.h
+```
+
+3. `mujoco-py` pointer / GLEW errors on GCC 14+:
+   - When compiling you might see `glReadPixels makes pointer from integer`, missing `GL/glew.h`, or `WrapMjVisual_* incompatible pointer type`.
+   - Apply the following patch to `${CONDA_PREFIX}/lib/python3.8/site-packages/mujoco_py/gl/eglshim.c` **before** reinstalling `mujoco-py`:
+     ```diff
+     #include <GL/glew.h>
+     +#include <stdio.h>
+     +#include <string.h>
+     +#include <stdint.h>
+     ...
+     -    glReadPixels(..., bufferOffset * viewport.width * viewport.height * 3);
+     +    glReadPixels(...,
+     +                 (GLvoid *)(uintptr_t)(bufferOffset * viewport.width * viewport.height * 3));
+     ...
+     -    glReadPixels(...,
+     -                 bufferOffset * viewport.width * viewport.height * sizeof(short));
+     +    glReadPixels(...,
+     +                 (GLvoid *)(uintptr_t)(bufferOffset * viewport.width * viewport.height * sizeof(short)));
+     ```
+   - This adds the missing headers and casts so GCC 12+/15 compiles cleanly with GLEW.
+
 
 ### Acknowledgements
 
